@@ -1,4 +1,4 @@
-﻿# BuildRestrictionTweaksSync
+# BuildRestrictionTweaksSync
 A building mod that lets you customize restrictions related to build piece placement.
 This version is a fork of the mod by aedenthorn that adds the option of installing the
 mod on the server to allow for syncing the configuration for all clients.
