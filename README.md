@@ -21,7 +21,7 @@ This mod adds the following config toggles related to build piece placement:
 If DisableAllRestrictions is set to true, building will never be restricted except in private zones.
 
 ## Configuration
-A config file BepInEx/config/Searica.Valheim.BuildRestrictionTweaks.cfg is created after running the game once with this mod.
+A config file BepInEx/config/Searica.Valheim.BuildRestrictionTweaksSync.cfg is created after running the game once with this mod.
 
 You can adjust the config values by editing this file using a text editor or in-game using the Config Manager﻿. The mod has a built-in file watcher to either method will work and changes will be reflected in-game as you change the settings.
 
