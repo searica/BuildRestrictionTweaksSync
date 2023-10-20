@@ -1,18 +1,12 @@
 ﻿using BepInEx;
-using BepInEx.Bootstrap;
 using BepInEx.Configuration;
 using BuildRestrictionTweaksSync.Logging;
-using Jotunn.Managers;
-using System;
 using System.IO;
-using System.Reflection;
 
 namespace BuildRestrictionTweaksSync.Configs
 {
     internal class PluginConfig
     {
-        private static BaseUnityPlugin configurationManager;
-
         private static readonly string ConfigFileName = Plugin.PluginGUID + ".cfg";
 
         private static readonly string ConfigFileFullPath = string.Concat(
@@ -237,55 +231,6 @@ namespace BuildRestrictionTweaksSync.Configs
                 Log.LogError("Please check your config entries for spelling and format!");
             }
             // Do whatever else I might need to
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        internal static void CheckForConfigManager()
-        {
-            if (GUIManager.IsHeadless())
-            {
-                return;
-            }
-
-            if (
-                Chainloader.PluginInfos.TryGetValue(
-                    "com.bepis.bepinex.configurationmanager",
-                    out PluginInfo configManagerInfo
-                )
-                && configManagerInfo.Instance
-            )
-            {
-                configurationManager = configManagerInfo.Instance;
-                Log.LogDebug("Configuration manager found, hooking DisplayingWindowChanged");
-
-                EventInfo eventinfo = configurationManager.GetType()
-                    .GetEvent("DisplayingWindowChanged");
-
-                if (eventinfo != null)
-                {
-                    Action<object, object> local = new(OnConfigManagerDisplayingWindowChanged);
-                    Delegate converted = Delegate.CreateDelegate(
-                        eventinfo.EventHandlerType,
-                        local.Target,
-                        local.Method
-                    );
-                    eventinfo.AddEventHandler(configurationManager, converted);
-                }
-            }
-        }
-
-        private static void OnConfigManagerDisplayingWindowChanged(object sender, object e)
-        {
-            //Jotunn.Logger.LogDebug("OnConfigManagerDisplayingWindowChanged recieved.");
-            PropertyInfo pi = configurationManager.GetType().GetProperty("DisplayingWindow");
-            bool cmActive = (bool)pi.GetValue(configurationManager, null);
-
-            if (!cmActive)
-            {
-                // do whatever I need to do when the cfg file reloads
-            }
         }
     }
 }

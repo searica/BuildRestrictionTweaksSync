@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using System;
 using BuildRestrictionTweaksSync.Configs;
 using static Player;
 using UnityEngine;
@@ -8,7 +7,22 @@ namespace BuildRestrictionTweaksSync
 {
     internal class Patches
     {
-        private static GameObject craftingStationObject;
+        private static GameObject _gameObject;
+        private static CraftingStation _craftingStation;
+
+        private static CraftingStation GetCraftingStation()
+        {
+            if (_gameObject == null)
+            {
+                _gameObject = new GameObject();
+                UnityEngine.Object.DontDestroyOnLoad(_gameObject);
+            }
+            if (_craftingStation == null)
+            {
+                _craftingStation = _gameObject.AddComponent<CraftingStation>();
+            }
+            return _craftingStation;
+        }
 
         [HarmonyPatch(typeof(Location))]
         private static class Location_IsInsideNoBuildLocation_Patch
@@ -36,14 +50,7 @@ namespace BuildRestrictionTweaksSync
                 if ((PluginConfig.IgnoreMissingStation.Value || PluginConfig.DisableAllRestrictions.Value)
                     && __result == null)
                 {
-                    if (craftingStationObject)
-                    {
-                        __result = craftingStationObject.GetComponent<CraftingStation>();
-                        return;
-                    }
-                    craftingStationObject = new GameObject();
-                    UnityEngine.Object.DontDestroyOnLoad(craftingStationObject);
-                    __result = craftingStationObject.AddComponent<CraftingStation>();
+                    __result = GetCraftingStation();
                 }
             }
         }
