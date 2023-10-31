@@ -3,7 +3,7 @@ using BuildRestrictionTweaksSync.Configs;
 using static Player;
 using UnityEngine;
 
-namespace BuildRestrictionTweaksSync
+namespace BuildRestrictionTweaksSync.Patches
 {
     internal class Patches
     {
@@ -15,7 +15,7 @@ namespace BuildRestrictionTweaksSync
             if (_gameObject == null)
             {
                 _gameObject = new GameObject();
-                UnityEngine.Object.DontDestroyOnLoad(_gameObject);
+                Object.DontDestroyOnLoad(_gameObject);
             }
             if (_craftingStation == null)
             {
@@ -31,7 +31,7 @@ namespace BuildRestrictionTweaksSync
             [HarmonyPatch(nameof(Location.IsInsideNoBuildLocation))]
             private static void Postfix(ref bool __result)
             {
-                if (PluginConfig.IgnoreBuildZone.Value || PluginConfig.DisableAllRestrictions.Value)
+                if (Config.IgnoreBuildZone.Value || Config.DisableAllRestrictions.Value)
                 {
                     __result = false;
                 }
@@ -47,7 +47,7 @@ namespace BuildRestrictionTweaksSync
             {
                 //IL_0053: Unknown result type (might be due to invalid IL or missing references)
                 //IL_005d: Expected O, but got Unknown
-                if ((PluginConfig.IgnoreMissingStation.Value || PluginConfig.DisableAllRestrictions.Value)
+                if ((Config.IgnoreMissingStation.Value || Config.DisableAllRestrictions.Value)
                     && __result == null)
                 {
                     __result = GetCraftingStation();
@@ -72,17 +72,17 @@ namespace BuildRestrictionTweaksSync
                         return;
                     }
 
-                    if (PluginConfig.DisableAllRestrictions.Value
-                        || (placementStatus == PlacementStatus.Invalid && PluginConfig.IgnoreInvalid.Value)
-                        || (placementStatus == PlacementStatus.BlockedbyPlayer && PluginConfig.IgnoreBlockedbyPlayer.Value)
-                        || (placementStatus == PlacementStatus.NoBuildZone && PluginConfig.IgnoreBuildZone.Value)
-                        || (placementStatus == PlacementStatus.MoreSpace && PluginConfig.IgnoreSpaceRestrictions.Value)
-                        || (placementStatus == PlacementStatus.NoTeleportArea && PluginConfig.IgnoreTeleportAreaRestrictions.Value)
-                        || (placementStatus == PlacementStatus.ExtensionMissingStation && PluginConfig.IgnoreMissingStationExtension.Value)
-                        || (placementStatus == PlacementStatus.WrongBiome && PluginConfig.IgnoreBiomeRestrictions.Value)
-                        || (placementStatus == PlacementStatus.NeedCultivated && PluginConfig.IgnoreCultivationRestrictions.Value)
-                        || (placementStatus == PlacementStatus.NeedDirt && PluginConfig.IgnoreDirtRestrictions.Value)
-                        || (placementStatus == PlacementStatus.NotInDungeon && PluginConfig.IgnoreDungeonRestrictions.Value))
+                    if (Config.DisableAllRestrictions.Value
+                        || placementStatus == PlacementStatus.Invalid && Config.IgnoreInvalid.Value
+                        || placementStatus == PlacementStatus.BlockedbyPlayer && Config.IgnoreBlockedbyPlayer.Value
+                        || placementStatus == PlacementStatus.NoBuildZone && Config.IgnoreBuildZone.Value
+                        || placementStatus == PlacementStatus.MoreSpace && Config.IgnoreSpaceRestrictions.Value
+                        || placementStatus == PlacementStatus.NoTeleportArea && Config.IgnoreTeleportAreaRestrictions.Value
+                        || placementStatus == PlacementStatus.ExtensionMissingStation && Config.IgnoreMissingStationExtension.Value
+                        || placementStatus == PlacementStatus.WrongBiome && Config.IgnoreBiomeRestrictions.Value
+                        || placementStatus == PlacementStatus.NeedCultivated && Config.IgnoreCultivationRestrictions.Value
+                        || placementStatus == PlacementStatus.NeedDirt && Config.IgnoreDirtRestrictions.Value
+                        || placementStatus == PlacementStatus.NotInDungeon && Config.IgnoreDungeonRestrictions.Value)
                     {
                         __instance.m_placementStatus = PlacementStatus.Valid;
                         __instance.SetPlacementGhostValid(true);

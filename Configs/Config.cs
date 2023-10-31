@@ -1,11 +1,10 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
-using BuildRestrictionTweaksSync.Logging;
 using System.IO;
 
 namespace BuildRestrictionTweaksSync.Configs
 {
-    internal class PluginConfig
+    internal class Config
     {
         private static readonly string ConfigFileName = Plugin.PluginGUID + ".cfg";
 
@@ -96,7 +95,6 @@ namespace BuildRestrictionTweaksSync.Configs
         internal static void Init(ConfigFile config)
         {
             configFile = config;
-            configFile.SaveOnConfigSet = false;
         }
 
         internal static void Save()
@@ -109,8 +107,21 @@ namespace BuildRestrictionTweaksSync.Configs
             configFile.SaveOnConfigSet = value;
         }
 
+        /// <summary>
+        ///     Sets SaveOnConfigSet to false and returns
+        ///     the value prior to calling this method.
+        /// </summary>
+        /// <returns></returns>
+        private static bool DisableSaveOnConfigSet()
+        {
+            var val = configFile.SaveOnConfigSet;
+            configFile.SaveOnConfigSet = false;
+            return val;
+        }
+
         internal static void SetUpConfig()
         {
+            var flag = DisableSaveOnConfigSet();
             DisableAllRestrictions = BindConfig<bool>(
                 MainSectionName,
                 "​​​​\u200BDisableAllRestrictions",
@@ -196,6 +207,7 @@ namespace BuildRestrictionTweaksSync.Configs
                 AcceptableBoolValuesList
             );
             Save();
+            SaveOnConfigSet(flag);
         }
 
         internal static void SetupWatcher()
