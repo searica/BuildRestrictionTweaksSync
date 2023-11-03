@@ -1,10 +1,10 @@
 ﻿{
   "name": "BuildRestrictionTweaksSync",
   "description": "A building mod that lets you customize restrictions related to build piece placement.",
-  "version_number": "1.0.0",
+  "version_number": "1.0.1",
   "website_url": "https://github.com/searica/BuildRestrictionTweaksSync",
   "dependencies": [
-    "denikson-BepInExPack_Valheim-5.4.2200",
-    "ValheimModding-Jotunn-2.14.5"
+    "denikson-BepInExPack_Valheim-5.4.2202",
+    "ValheimModding-Jotunn-2.14.6"
   ]
 }

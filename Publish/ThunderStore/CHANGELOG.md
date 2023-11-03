@@ -8,6 +8,15 @@
 			<td align="center">1.0.0</td>
 			<td align="left">
 				<ul>
+					<li>Maintenance update.</li>
+					<li>Improved shutdown performance.</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">1.0.0</td>
+			<td align="left">
+				<ul>
 					<li>Initial release.</li>
 				</ul>
 			</td>
