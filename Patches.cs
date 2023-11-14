@@ -3,7 +3,7 @@ using BuildRestrictionTweaksSync.Configs;
 using static Player;
 using UnityEngine;
 
-namespace BuildRestrictionTweaksSync.Patches
+namespace BuildRestrictionTweaksSync
 {
     internal class Patches
     {
@@ -31,7 +31,7 @@ namespace BuildRestrictionTweaksSync.Patches
             [HarmonyPatch(nameof(Location.IsInsideNoBuildLocation))]
             private static void Postfix(ref bool __result)
             {
-                if (Config.IgnoreBuildZone.Value || Config.DisableAllRestrictions.Value)
+                if (RestrictionTweaks.IgnoreBuildZone.Value || RestrictionTweaks.DisableAllRestrictions.Value)
                 {
                     __result = false;
                 }
@@ -47,7 +47,7 @@ namespace BuildRestrictionTweaksSync.Patches
             {
                 //IL_0053: Unknown result type (might be due to invalid IL or missing references)
                 //IL_005d: Expected O, but got Unknown
-                if ((Config.IgnoreMissingStation.Value || Config.DisableAllRestrictions.Value)
+                if ((RestrictionTweaks.IgnoreMissingStation.Value || RestrictionTweaks.DisableAllRestrictions.Value)
                     && __result == null)
                 {
                     __result = GetCraftingStation();
@@ -72,17 +72,17 @@ namespace BuildRestrictionTweaksSync.Patches
                         return;
                     }
 
-                    if (Config.DisableAllRestrictions.Value
-                        || placementStatus == PlacementStatus.Invalid && Config.IgnoreInvalid.Value
-                        || placementStatus == PlacementStatus.BlockedbyPlayer && Config.IgnoreBlockedbyPlayer.Value
-                        || placementStatus == PlacementStatus.NoBuildZone && Config.IgnoreBuildZone.Value
-                        || placementStatus == PlacementStatus.MoreSpace && Config.IgnoreSpaceRestrictions.Value
-                        || placementStatus == PlacementStatus.NoTeleportArea && Config.IgnoreTeleportAreaRestrictions.Value
-                        || placementStatus == PlacementStatus.ExtensionMissingStation && Config.IgnoreMissingStationExtension.Value
-                        || placementStatus == PlacementStatus.WrongBiome && Config.IgnoreBiomeRestrictions.Value
-                        || placementStatus == PlacementStatus.NeedCultivated && Config.IgnoreCultivationRestrictions.Value
-                        || placementStatus == PlacementStatus.NeedDirt && Config.IgnoreDirtRestrictions.Value
-                        || placementStatus == PlacementStatus.NotInDungeon && Config.IgnoreDungeonRestrictions.Value)
+                    if (RestrictionTweaks.DisableAllRestrictions.Value
+                        || placementStatus == PlacementStatus.Invalid && RestrictionTweaks.IgnoreInvalid.Value
+                        || placementStatus == PlacementStatus.BlockedbyPlayer && RestrictionTweaks.IgnoreBlockedbyPlayer.Value
+                        || placementStatus == PlacementStatus.NoBuildZone && RestrictionTweaks.IgnoreBuildZone.Value
+                        || placementStatus == PlacementStatus.MoreSpace && RestrictionTweaks.IgnoreSpaceRestrictions.Value
+                        || placementStatus == PlacementStatus.NoTeleportArea && RestrictionTweaks.IgnoreTeleportAreaRestrictions.Value
+                        || placementStatus == PlacementStatus.ExtensionMissingStation && RestrictionTweaks.IgnoreMissingStationExtension.Value
+                        || placementStatus == PlacementStatus.WrongBiome && RestrictionTweaks.IgnoreBiomeRestrictions.Value
+                        || placementStatus == PlacementStatus.NeedCultivated && RestrictionTweaks.IgnoreCultivationRestrictions.Value
+                        || placementStatus == PlacementStatus.NeedDirt && RestrictionTweaks.IgnoreDirtRestrictions.Value
+                        || placementStatus == PlacementStatus.NotInDungeon && RestrictionTweaks.IgnoreDungeonRestrictions.Value)
                     {
                         __instance.m_placementStatus = PlacementStatus.Valid;
                         __instance.SetPlacementGhostValid(true);

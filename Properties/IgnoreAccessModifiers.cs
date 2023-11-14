@@ -1,9 +1,4 @@
-﻿// Veilheim
-// a Valheim mod
-// 
-// File:    IgnoreAccessModifiers.cs
-// Project: Veilheim
-
+﻿// File:    IgnoreAccessModifiers.cs
 using System.Security.Permissions;
 
 // SecurityPermision set to minimum
