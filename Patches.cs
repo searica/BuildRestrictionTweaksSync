@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BuildRestrictionTweaksSync
 {
-    internal class Patches
+    internal static class Patches
     {
         private static GameObject _gameObject;
         private static CraftingStation _craftingStation;

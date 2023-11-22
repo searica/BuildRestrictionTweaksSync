@@ -10,7 +10,7 @@ namespace BuildRestrictionTweaksSync
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInDependency(Jotunn.Main.ModGuid, Jotunn.Main.Version)]
-    internal class RestrictionTweaks : BaseUnityPlugin
+    internal sealed class RestrictionTweaks : BaseUnityPlugin
     {
         internal const string Author = "Searica";
         public const string PluginName = "BuildRestrictionTweaksSync";

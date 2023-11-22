@@ -10,7 +10,7 @@ using BuildRestrictionTweaksSync.Extensions;
 
 namespace BuildRestrictionTweaksSync.Configs
 {
-    internal class ConfigManager
+    internal static class ConfigManager
     {
         private static string ConfigFileName;
 
