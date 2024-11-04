@@ -5,10 +5,10 @@
 			<th align="center">Notes</th>
 		</tr>
 		<tr>
-			<td align="center">1.1.0</td>
+			<td align="center">1.2.0</td>
 			<td align="left">
 				<ul>
-					<li>Updated for Bog With upate.</li>
+					<li>Updated for Bog Witch upate.</li>
 				</ul>
 			</td
 		<tr>
