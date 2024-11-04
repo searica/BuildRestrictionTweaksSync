@@ -55,13 +55,9 @@
 		<Content Include="Package\icon.png" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="HarmonyX" Version="2.10.2" />
-		<PackageReference Include="JotunnLib" Version="2.20.0" />
+		<PackageReference Include="JotunnLib" Version="2.21.3" />
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-		<PackageReference Include="Mono.Cecil" Version="0.11.5" />
 		<PackageReference Include="MonoMod" Version="22.7.31.1" />
-		<PackageReference Include="MonoMod.RuntimeDetour" Version="25.0.2" />
-		<PackageReference Include="MonoMod.Utils" Version="25.0.3" />
 		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
 	</ItemGroup>
 	<ItemGroup>
