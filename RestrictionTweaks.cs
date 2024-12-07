@@ -5,11 +5,14 @@ using BepInEx.Logging;
 using BuildRestrictionTweaksSync.Configs;
 using BepInEx.Configuration;
 using UnityEngine;
+using Jotunn.Utils;
 
 namespace BuildRestrictionTweaksSync
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInDependency(Jotunn.Main.ModGuid, Jotunn.Main.Version)]
+    [NetworkCompatibility(CompatibilityLevel.VersionCheckOnly, VersionStrictness.Patch)]
+    [SynchronizationMode(AdminOnlyStrictness.IfOnServer)]
     internal sealed class RestrictionTweaks : BaseUnityPlugin
     {
         internal const string Author = "Searica";
