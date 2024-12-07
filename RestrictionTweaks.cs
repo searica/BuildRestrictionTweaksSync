@@ -49,6 +49,7 @@ namespace BuildRestrictionTweaksSync
 
             ConfigManager.Init(PluginGUID, Config, false);
             Initialize();
+            ConfigManager.Save();
             ConfigManager.SaveOnConfigSet(true);
 
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), harmonyInstanceId: PluginGUID);
