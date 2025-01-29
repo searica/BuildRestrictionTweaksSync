@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using BuildRestrictionTweaksSync.Configs;
 using static Player;
 using UnityEngine;
 
