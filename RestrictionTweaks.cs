@@ -18,7 +18,7 @@ namespace BuildRestrictionTweaksSync
         internal const string Author = "Searica";
         public const string PluginName = "BuildRestrictionTweaksSync";
         public const string PluginGUID = $"{Author}.Valheim.{PluginName}";
-        public const string PluginVersion = "1.2.1";
+        public const string PluginVersion = "1.3.0";
 
         private const string MainSection = "Global";
 
@@ -80,7 +80,7 @@ namespace BuildRestrictionTweaksSync
             );
             IgnoreBlockedbyPlayer = ConfigManager.BindConfig(
                 MainSection,
-                "ignoreBlockedbyPlayer",
+                "IgnoreBlockedbyPlayer",
                 false,
                 "Ignore player blocking build."
             );
@@ -110,7 +110,7 @@ namespace BuildRestrictionTweaksSync
             );
             IgnoreMissingStationExtension = ConfigManager.BindConfig(
                 MainSection,
-                "IignoreMissingStationExtension",
+                "IgnoreMissingStationExtension",
                 false,
                 "Ignore missing station extension."
             );
