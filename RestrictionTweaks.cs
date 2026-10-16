@@ -18,7 +18,7 @@ namespace BuildRestrictionTweaksSync
         internal const string Author = "Searica";
         public const string PluginName = "BuildRestrictionTweaksSync";
         public const string PluginGUID = $"{Author}.Valheim.{PluginName}";
-        public const string PluginVersion = "1.3.0";
+        public const string PluginVersion = "1.4.0";
 
         private const string MainSection = "Global";
 
@@ -45,6 +45,9 @@ namespace BuildRestrictionTweaksSync
         public static ConfigEntry<bool> IgnoreDirtRestrictions { get; private set; }
 
         public static ConfigEntry<bool> IgnoreDungeonRestrictions { get; private set; }
+
+        public static ConfigEntry<bool> IgnoreDeepSnowRestrictions { get; private set; }    
+        public static ConfigEntry<bool> IgnoreRequiresSnowRestrictions { get; private set; }
 
         public void Awake()
         {
@@ -94,7 +97,7 @@ namespace BuildRestrictionTweaksSync
                 MainSection,
                 "IgnoreBuildZone",
                 false,
-                "Ignore zone restrictions."
+                "Ignore no build zone restrictions."
             );
             IgnoreSpaceRestrictions = ConfigManager.BindConfig(
                 MainSection,
@@ -143,6 +146,18 @@ namespace BuildRestrictionTweaksSync
                 "IgnoreDungeonRestrictions",
                 false,
                 "Ignore indoor restrictions."
+            );
+            IgnoreDeepSnowRestrictions = ConfigManager.BindConfig(
+                MainSection,
+                nameof(IgnoreDeepSnowRestrictions),
+                false,
+                "Ignore deep snow preventing placement."
+            );
+            IgnoreRequiresSnowRestrictions = ConfigManager.BindConfig(
+                MainSection,
+                nameof(IgnoreRequiresSnowRestrictions),
+                false,
+                "Ignore lack of snow preventing placement."
             );
         }
     }

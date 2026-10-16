@@ -5,6 +5,14 @@
 			<th align="center">Notes</th>
 		</tr>
 		<tr>
+			<td align="center">1.4.0</td>
+			<td align="left">
+				<ul>
+					<li>Added config settings for disabling the new build restriction in the Deep North.</li>
+				</ul>
+			</td
+		<tr>
+		<tr>
 			<td align="center">1.3.0</td>
 			<td align="left">
 				<ul>

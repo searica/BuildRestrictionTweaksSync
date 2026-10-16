@@ -65,23 +65,25 @@ namespace BuildRestrictionTweaksSync
                 {
                     PlacementStatus placementStatus = __instance.m_placementStatus;
 
-                    if (placementStatus == PlacementStatus.Valid
-                        || placementStatus == PlacementStatus.PrivateZone)
+                    if (placementStatus == PlacementStatus.Valid || placementStatus == PlacementStatus.PrivateZone)
                     {
                         return;
                     }
 
-                    if (RestrictionTweaks.DisableAllRestrictions.Value
-                        || placementStatus == PlacementStatus.Invalid && RestrictionTweaks.IgnoreInvalid.Value
-                        || placementStatus == PlacementStatus.BlockedbyPlayer && RestrictionTweaks.IgnoreBlockedbyPlayer.Value
-                        || placementStatus == PlacementStatus.NoBuildZone && RestrictionTweaks.IgnoreBuildZone.Value
-                        || placementStatus == PlacementStatus.MoreSpace && RestrictionTweaks.IgnoreSpaceRestrictions.Value
-                        || placementStatus == PlacementStatus.NoTeleportArea && RestrictionTweaks.IgnoreTeleportAreaRestrictions.Value
-                        || placementStatus == PlacementStatus.ExtensionMissingStation && RestrictionTweaks.IgnoreMissingStationExtension.Value
-                        || placementStatus == PlacementStatus.WrongBiome && RestrictionTweaks.IgnoreBiomeRestrictions.Value
-                        || placementStatus == PlacementStatus.NeedCultivated && RestrictionTweaks.IgnoreCultivationRestrictions.Value
-                        || placementStatus == PlacementStatus.NeedDirt && RestrictionTweaks.IgnoreDirtRestrictions.Value
-                        || placementStatus == PlacementStatus.NotInDungeon && RestrictionTweaks.IgnoreDungeonRestrictions.Value)
+                    if (RestrictionTweaks.DisableAllRestrictions.Value || 
+                        (placementStatus == PlacementStatus.Invalid && RestrictionTweaks.IgnoreInvalid.Value) || 
+                        (placementStatus == PlacementStatus.BlockedbyPlayer && RestrictionTweaks.IgnoreBlockedbyPlayer.Value) || 
+                        (placementStatus == PlacementStatus.NoBuildZone && RestrictionTweaks.IgnoreBuildZone.Value) || 
+                        (placementStatus == PlacementStatus.MoreSpace && RestrictionTweaks.IgnoreSpaceRestrictions.Value) || 
+                        (placementStatus == PlacementStatus.NoTeleportArea && RestrictionTweaks.IgnoreTeleportAreaRestrictions.Value) || 
+                        (placementStatus == PlacementStatus.ExtensionMissingStation && RestrictionTweaks.IgnoreMissingStationExtension.Value) || 
+                        (placementStatus == PlacementStatus.WrongBiome && RestrictionTweaks.IgnoreBiomeRestrictions.Value) || 
+                        (placementStatus == PlacementStatus.NeedCultivated && RestrictionTweaks.IgnoreCultivationRestrictions.Value) || 
+                        (placementStatus == PlacementStatus.NeedDirt && RestrictionTweaks.IgnoreDirtRestrictions.Value) || 
+                        (placementStatus == PlacementStatus.NotInDungeon && RestrictionTweaks.IgnoreDungeonRestrictions.Value) ||
+                        (placementStatus == PlacementStatus.DeepSnow && RestrictionTweaks.IgnoreDeepSnowRestrictions.Value) ||
+                        (placementStatus == PlacementStatus.NoSnow && RestrictionTweaks.IgnoreRequiresSnowRestrictions.Value)
+                        )
                     {
                         __instance.m_placementStatus = PlacementStatus.Valid;
                         __instance.SetPlacementGhostValid(true);
